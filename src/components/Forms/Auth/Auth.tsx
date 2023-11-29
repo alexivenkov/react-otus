@@ -1,17 +1,17 @@
 import React, { FC, memo } from 'react';
-import { EmailField } from './EmailField/EmailField';
 import './Auth.sass';
+import cn from 'clsx';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { AuthInputs, AuthType } from './types';
-import { PasswordField } from './PasswordField/PasswordField';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
+import { FormField } from '../Common/FormField/FormField';
 
 interface AuthProps {
   type: AuthType;
 }
 
-const schema = yup
+const validationSchema = yup
   .object({
     email: yup.string().required().email(),
     password: yup.string().required().min(7),
@@ -24,7 +24,7 @@ export const Auth: FC = memo<AuthProps>(({ type }) => {
     handleSubmit,
     formState: { errors },
   } = useForm<AuthInputs>({
-    resolver: yupResolver(schema),
+    resolver: yupResolver(validationSchema),
   });
 
   const onSubmit: SubmitHandler<AuthInputs> = (data) => console.log(data);
@@ -32,11 +32,17 @@ export const Auth: FC = memo<AuthProps>(({ type }) => {
   return (
     <div>
       <form onSubmit={handleSubmit(onSubmit)}>
-        <div>
-          <EmailField register={register} errors={errors} />
+        <div className={cn('field-container')}>
+          <FormField type={'text'} label={'email'} name={'email'} register={register('email')} errors={errors.email} />
         </div>
-        <div>
-          <PasswordField register={register} errors={errors} />
+        <div className={cn('field-container')}>
+          <FormField
+            type={'password'}
+            label={'password'}
+            name={'password'}
+            register={register('password')}
+            errors={errors.password}
+          />
         </div>
         <div>
           <button type={'submit'}>{type == AuthType.signIn ? 'Sign In' : 'Sign Up'}</button>

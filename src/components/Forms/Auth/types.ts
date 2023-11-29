@@ -1,4 +1,6 @@
-export interface AuthInputs {
+import { InputHTMLAttributes } from 'react';
+
+export interface AuthInputs extends InputHTMLAttributes<HTMLInputElement> {
   email: string;
   password: string;
 }
