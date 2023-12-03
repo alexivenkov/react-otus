@@ -45,7 +45,7 @@ type Product = {
  * Операция (Operation) может быть либо тратой (Cost), либо доходом (Profit)
  *
  */
-type Operation = Cost | Profit;
+export type Operation = Cost | Profit;
 
 type OperationType<T extends 'Cost' | 'Profit'> = {
   id: string;

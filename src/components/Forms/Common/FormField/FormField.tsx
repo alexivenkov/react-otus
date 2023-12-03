@@ -15,7 +15,7 @@ export const FormField: FC<FormFieldProps> = (props: FormFieldProps) => {
   return (
     <div className={cn('input-container')}>
       <label htmlFor={props.name}>{props.label}</label>
-      <input type={props.type} name={props.name} {...props.register} />
+      <input {...props.register} {...props} />
       <ErrorField error={props.errors} />
     </div>
   );
