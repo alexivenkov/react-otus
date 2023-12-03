@@ -12,6 +12,14 @@ export const resources = {
           theme: 'Dark Mode',
         },
       },
+      forms: {
+        profile: {
+          nickname: 'nickname',
+          about: 'about',
+          save: 'save',
+          change: 'change',
+        },
+      },
     },
   },
   ru: {
