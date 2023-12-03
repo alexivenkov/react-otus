@@ -2,6 +2,7 @@ export const resources = {
   en: {
     translation: {
       content: 'Some Content',
+      loading: 'Loading',
       header: {
         menu: {
           first: 'menu item 1',
@@ -12,11 +13,15 @@ export const resources = {
           theme: 'Dark Mode',
         },
       },
+      buttons: {
+        showModal: 'Show Modal',
+      },
     },
   },
   ru: {
     translation: {
       content: 'Какой то контент',
+      loading: 'Загрузка',
       header: {
         menu: {
           first: 'меню 1',
@@ -26,6 +31,9 @@ export const resources = {
         switchers: {
           theme: 'Темная Тема',
         },
+      },
+      buttons: {
+        showModal: 'Показать модальное окно',
       },
     },
   },
