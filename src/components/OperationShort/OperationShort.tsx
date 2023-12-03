@@ -17,7 +17,7 @@ export const OperationShort: FC<OperationShortProps> = ({ name, category, sum = 
           <span>{desc}</span>
         </div>
         <div className={cn('operation-short-sum')}>
-          <span>{sum}</span>
+          <span>{sum} €</span>
         </div>
       </div>
       <div className={cn('operation-short-panel')}>

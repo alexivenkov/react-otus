@@ -47,7 +47,7 @@ type Product = {
  */
 export type Operation = Cost | Profit;
 
-type OperationType<T extends 'Cost' | 'Profit'> = {
+export type OperationType<T extends 'Cost' | 'Profit'> = {
   id: string;
   name: string;
   desc?: string;
@@ -67,7 +67,7 @@ type OperationType<T extends 'Cost' | 'Profit'> = {
  * - category (Категория)
  * - type ('Cost')
  **/
-type Cost = OperationType<'Cost'>;
+export type Cost = OperationType<'Cost'>;
 
 /**
  * Доход (Profit) содержит
@@ -79,7 +79,7 @@ type Cost = OperationType<'Cost'>;
  * - category (Категория)
  * - type ('Profit')
  * */
-type Profit = OperationType<'Profit'>;
+export type Profit = OperationType<'Profit'>;
 
 export const createRandomCategory = (): Category => {
   return {

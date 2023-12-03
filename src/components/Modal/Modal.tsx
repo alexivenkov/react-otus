@@ -1,27 +1,23 @@
 import React, { FC, useEffect, useState } from 'react';
 import './Modal.sass';
 import cn from 'clsx';
+import { createPortal } from 'react-dom';
 
 interface ModalProps {
   visible: boolean;
-  children?: string;
-  title?: string;
+  closeHandler: () => void;
+  children: string;
+  title: string;
 }
 
-export const Modal: FC<ModalProps> = ({ visible = false, children = '', title = '' }) => {
-  const [show, setShow] = useState<boolean>(visible);
-
-  useEffect((): void => {
-    setShow(visible);
-  }, [visible]);
-
-  return (
+export const Modal: FC<ModalProps> = ({ visible = false, closeHandler, children = '', title = '' }) => {
+  return createPortal(
     <>
-      {show && (
+      {visible && (
         <div className={cn('modal')}>
           <article className={cn('modal-container')}>
             <header>
-              <span className={cn('close')} onClick={() => setShow(false)}>
+              <span className={cn('close')} onClick={closeHandler}>
                 &times;
               </span>
               <h1>{title}</h1>
@@ -30,6 +26,7 @@ export const Modal: FC<ModalProps> = ({ visible = false, children = '', title = 
           </article>
         </div>
       )}
-    </>
+    </>,
+    document.body
   );
 };
