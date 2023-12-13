@@ -16,6 +16,24 @@ export const resources = {
       buttons: {
         showModal: 'Show Modal',
       },
+      forms: {
+        profile: {
+          nickname: 'nickname',
+          about: 'about',
+          save: 'save',
+          change: 'change',
+        },
+        operation: {
+          create: 'Create Operation',
+          update: 'Update operation',
+          name: 'Operation Name',
+          category: 'Category',
+          sum: 'Sum',
+          desc: 'Description',
+          date: 'Created At',
+          save: 'Save',
+        },
+      },
     },
   },
   ru: {
@@ -29,11 +47,29 @@ export const resources = {
           third: 'меню 3',
         },
         switchers: {
-          theme: 'Темная Тема',
+          theme: 'Тёмная Тема',
         },
       },
       buttons: {
         showModal: 'Показать модальное окно',
+      },
+      forms: {
+        profile: {
+          nickname: 'Ник',
+          about: 'О Себе',
+          save: 'Сохранить',
+          change: 'Изменить',
+        },
+        operation: {
+          create: 'Создать Операцию',
+          update: 'Обновить Операцию',
+          name: 'Операция',
+          category: 'Категория',
+          sum: 'Сумма Операции',
+          desc: 'Описание',
+          date: 'Дата Создания',
+          save: 'Сохранить',
+        },
       },
     },
   },
