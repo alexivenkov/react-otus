@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { Operation } from './Operation';
-import { createRandomOperation } from '../../../../src/homeworks/ts1/3_write';
+import { createRandomOperation } from '@/homeworks/ts1/3_write';
 
 const meta: Meta<typeof Operation> = {
   title: 'Forms/Operation',

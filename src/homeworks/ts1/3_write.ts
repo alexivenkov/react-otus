@@ -47,7 +47,12 @@ type Product = {
  */
 export type Operation = Cost | Profit;
 
-export type OperationType<T extends 'Cost' | 'Profit'> = {
+export enum OperationTypes{
+  Profit = 'Profit',
+  Cost = 'Cost',
+}
+
+export type OperationType<T extends OperationTypes.Profit | OperationTypes.Cost> = {
   id: string;
   name: string;
   desc?: string;
@@ -67,7 +72,7 @@ export type OperationType<T extends 'Cost' | 'Profit'> = {
  * - category (Категория)
  * - type ('Cost')
  **/
-export type Cost = OperationType<'Cost'>;
+export type Cost = OperationType<OperationTypes.Cost>;
 
 /**
  * Доход (Profit) содержит
@@ -79,7 +84,7 @@ export type Cost = OperationType<'Cost'>;
  * - category (Категория)
  * - type ('Profit')
  * */
-export type Profit = OperationType<'Profit'>;
+export type Profit = OperationType<OperationTypes.Profit>;
 
 export const createRandomCategory = (): Category => {
   return {
@@ -120,7 +125,7 @@ export const createRandomOperation = (createdAt: string): Operation => {
         createdAt: createdAt,
         category: createRandomCategory(),
         amount: faker.number.int({ min: 10, max: 100 }),
-        type: 'Cost',
+        type: OperationTypes.Cost,
       };
     case 1:
       return {
@@ -130,7 +135,7 @@ export const createRandomOperation = (createdAt: string): Operation => {
         createdAt: createdAt,
         category: createRandomCategory(),
         amount: faker.number.int({ min: 10, max: 100 }),
-        type: 'Profit',
+        type: OperationTypes.Profit,
       };
   }
 };

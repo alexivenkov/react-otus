@@ -25,6 +25,7 @@ export const resources = {
           change: 'change',
         },
         operation: {
+          type: 'Operation type',
           title: 'Save Operation',
           create: 'Create Operation',
           update: 'Update operation',
@@ -34,6 +35,8 @@ export const resources = {
           desc: 'Description',
           date: 'Created At',
           save: 'Save',
+          cost: 'Cost',
+          profit: 'Profit'
         },
       },
     },
@@ -64,6 +67,7 @@ export const resources = {
           change: 'Изменить',
         },
         operation: {
+          type: 'Тип Операции',
           title: 'Сохранить Операцию',
           create: 'Создать Операцию',
           update: 'Обновить Операцию',
@@ -73,6 +77,8 @@ export const resources = {
           desc: 'Описание',
           date: 'Дата Создания',
           save: 'Сохранить',
+          cost: 'Трата',
+          profit: 'Доход'
         },
       },
     },

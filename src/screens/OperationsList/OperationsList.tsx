@@ -1,15 +1,15 @@
-import React, { FC, useState } from 'react';
-import { OperationsList as List } from '@/components/OperationsList/OperationsList';
-import { createRandomOperation, Operation } from '@/homeworks/ts1/3_write';
-import { Modal } from '@/components/Modal/Modal';
-import { OperationInputs } from '@/components/Forms/Operation/types';
-import { Operation as OperationForm } from '../../components/Forms/Operation/Operation';
-import { useTranslation } from 'react-i18next';
-import { faker } from '@faker-js/faker';
+import React, {FC, useState} from 'react';
+import {OperationsList as List} from '@/components/OperationsList/OperationsList';
+import {createRandomOperation, Operation, OperationType, OperationTypes, Profit} from '@/homeworks/ts1/3_write';
+import {Modal} from '@/components/Modal/Modal';
+import {OperationInputs} from '@/components/Forms/Operation/types';
+import {Operation as OperationForm} from '../../components/Forms/Operation/Operation';
+import {useTranslation} from 'react-i18next';
+import {faker} from '@faker-js/faker';
 import cn from 'clsx';
 import './OperationsList.sass';
-import { Button } from '@/components/Forms/Common/Button/Button';
-import { ButtonScales, ButtonVariant } from '@/components/Forms/Common/Button/types';
+import {Button} from '@/components/Forms/Common/Button/Button';
+import {ButtonScales, ButtonVariant} from '@/components/Forms/Common/Button/types';
 
 export const OperationsList: FC = () => {
   const [operations, setOperations] = useState<Operation[]>([
@@ -31,7 +31,7 @@ export const OperationsList: FC = () => {
       desc: data.desc,
       amount: data.sum,
       createdAt: new Date().toUTCString(),
-      type: data.sum > 0 ? 'Profit' : 'Cost',
+      type: data.sum > 0 ? OperationTypes.Profit : OperationTypes.Cost,
       category: {
         id: faker.string.uuid(),
         name: data.category,
@@ -50,7 +50,7 @@ export const OperationsList: FC = () => {
     operation.name = data.name;
     operation.desc = data.desc;
     operation.amount = data.sum;
-    operation.type = data.sum > 0 ? 'Profit' : 'Cost';
+    operation.type = data.sum > 0 ? OperationTypes.Profit : OperationTypes.Cost;
     operation.category.name = data.category;
 
     const index: number = operations.findIndex((operation) => operation.id == currentOperation.id);
