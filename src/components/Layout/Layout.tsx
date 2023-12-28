@@ -7,7 +7,8 @@ import { AppContext, Context } from '@/App';
 interface LayoutProps {
   children: React.ReactNode;
 }
-export const Layout = memo<LayoutProps>(({ children }) => {
+
+export const Layout = memo<LayoutProps>(({ children }: LayoutProps) => {
   const context: AppContext = useContext<AppContext>(Context);
   const theme = `layout-${context?.theme ?? 'light'}`;
 
@@ -22,3 +23,5 @@ export const Layout = memo<LayoutProps>(({ children }) => {
     </div>
   );
 });
+
+Layout.displayName = 'Layout';

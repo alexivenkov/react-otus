@@ -36,7 +36,7 @@ export const resources = {
           date: 'Created At',
           save: 'Save',
           cost: 'Cost',
-          profit: 'Profit'
+          profit: 'Profit',
         },
       },
     },
@@ -78,7 +78,7 @@ export const resources = {
           date: 'Дата Создания',
           save: 'Сохранить',
           cost: 'Трата',
-          profit: 'Доход'
+          profit: 'Доход',
         },
       },
     },

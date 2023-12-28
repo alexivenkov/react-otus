@@ -1,15 +1,15 @@
-import React, {FC} from 'react';
-import {useTranslation} from 'react-i18next';
-import {yupResolver} from '@hookform/resolvers/yup';
-import {OperationFormTypes, OperationInputs} from './types';
-import {SubmitHandler, useForm} from 'react-hook-form';
-import {FormField} from '../Common/FormField/FormField';
-import {Button} from '../Common/Button/Button';
-import {Operation as OperationType, OperationTypes} from '@/homeworks/ts1/3_write';
-import {ButtonScales, ButtonVariant} from '../Common/Button/types';
+import React, { FC } from 'react';
+import { useTranslation } from 'react-i18next';
+import { yupResolver } from '@hookform/resolvers/yup';
+import { OperationFormTypes, OperationInputs } from './types';
+import { SubmitHandler, useForm } from 'react-hook-form';
+import { FormField } from '../Common/FormField/FormField';
+import { Button } from '../Common/Button/Button';
+import { Operation as OperationType, OperationTypes } from '@/homeworks/ts1/3_write';
+import { ButtonScales, ButtonVariant } from '../Common/Button/types';
 import './Operation.sass';
 import * as yup from 'yup';
-import {SelectField} from "@/components/Forms/Common/SelectField/SelectField";
+import { SelectField } from '@/components/Forms/Common/SelectField/SelectField';
 
 interface OperationProps {
   operation?: OperationType;
@@ -19,13 +19,16 @@ interface OperationProps {
 const validationSchema = yup.object({
   name: yup.string().required(),
   category: yup.string().required(),
-  sum: yup.number().required().when('operationType', {
-    is: OperationTypes.Cost,
-    then: (schema) => schema.negative(),
-    otherwise: (schema) => schema.moreThan(-1)
-  }),
+  sum: yup
+    .number()
+    .required()
+    .when('operationType', {
+      is: OperationTypes.Cost,
+      then: (schema) => schema.negative(),
+      otherwise: (schema) => schema.moreThan(-1),
+    }),
   desc: yup.string(),
-  operationType: yup.string().required()
+  operationType: yup.string().required(),
 });
 
 export const Operation: FC<OperationProps> = ({ operation, submitHandler }: OperationProps) => {
@@ -54,22 +57,23 @@ export const Operation: FC<OperationProps> = ({ operation, submitHandler }: Oper
         </p>
         <div>
           <SelectField
-              name={'operationType'}
-              label={t('forms.operation.type')}
-              options={[
-                {
-                  name: t('forms.operation.profit'),
-                  value: OperationTypes.Profit,
-                  selected: operation?.type === OperationTypes.Profit
-                },
-                {
-                  name: t('forms.operation.cost'),
-                  value: OperationTypes.Cost,
-                  selected: operation?.type === OperationTypes.Cost
-                },
-              ]}
-              register={register('operationType')}
-              errors={errors.operationType} />
+            name={'operationType'}
+            label={t('forms.operation.type')}
+            options={[
+              {
+                name: t('forms.operation.profit'),
+                value: OperationTypes.Profit,
+                selected: operation?.type === OperationTypes.Profit,
+              },
+              {
+                name: t('forms.operation.cost'),
+                value: OperationTypes.Cost,
+                selected: operation?.type === OperationTypes.Cost,
+              },
+            ]}
+            register={register('operationType')}
+            errors={errors.operationType}
+          />
         </div>
         <div>
           <FormField

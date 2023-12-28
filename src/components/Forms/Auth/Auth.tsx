@@ -18,7 +18,7 @@ const validationSchema = yup
   })
   .required();
 
-export const Auth: FC = memo<AuthProps>(({ type }) => {
+export const Auth: FC = memo<AuthProps>(({ type }: AuthProps) => {
   const {
     register,
     handleSubmit,
@@ -51,3 +51,5 @@ export const Auth: FC = memo<AuthProps>(({ type }) => {
     </div>
   );
 });
+
+Auth.displayName = 'Auth';

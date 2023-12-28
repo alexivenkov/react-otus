@@ -1,15 +1,15 @@
-import React, {FC, useState} from 'react';
-import {OperationsList as List} from '@/components/OperationsList/OperationsList';
-import {createRandomOperation, Operation, OperationType, OperationTypes, Profit} from '@/homeworks/ts1/3_write';
-import {Modal} from '@/components/Modal/Modal';
-import {OperationInputs} from '@/components/Forms/Operation/types';
-import {Operation as OperationForm} from '../../components/Forms/Operation/Operation';
-import {useTranslation} from 'react-i18next';
-import {faker} from '@faker-js/faker';
+import React, { FC, useState } from 'react';
+import { OperationsList as List } from '@/components/OperationsList/OperationsList';
+import { createRandomOperation, Operation, OperationTypes } from '@/homeworks/ts1/3_write';
+import { Modal } from '@/components/Modal/Modal';
+import { OperationInputs } from '@/components/Forms/Operation/types';
+import { Operation as OperationForm } from '../../components/Forms/Operation/Operation';
+import { useTranslation } from 'react-i18next';
+import { faker } from '@faker-js/faker';
 import cn from 'clsx';
 import './OperationsList.sass';
-import {Button} from '@/components/Forms/Common/Button/Button';
-import {ButtonScales, ButtonVariant} from '@/components/Forms/Common/Button/types';
+import { Button } from '@/components/Forms/Common/Button/Button';
+import { ButtonScales, ButtonVariant } from '@/components/Forms/Common/Button/types';
 
 export const OperationsList: FC = () => {
   const [operations, setOperations] = useState<Operation[]>([

@@ -47,7 +47,7 @@ type Product = {
  */
 export type Operation = Cost | Profit;
 
-export enum OperationTypes{
+export enum OperationTypes {
   Profit = 'Profit',
   Cost = 'Cost',
 }

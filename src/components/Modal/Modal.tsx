@@ -6,7 +6,7 @@ import { createPortal } from 'react-dom';
 interface ModalProps {
   visible: boolean;
   closeHandler: () => void;
-  children: any;
+  children: React.ReactNode;
   title: string;
 }
 

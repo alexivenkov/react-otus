@@ -10,7 +10,7 @@ type OperationPros = {
   desc: string;
 };
 
-export const Operation: FC<OperationPros> = memo(({ name, category, sum = 0, date, desc }) => {
+export const Operation: FC<OperationPros> = memo(({ name, category, sum = 0, date, desc }: OperationPros) => {
   const dateFormatted = `
     ${date.getDate()} ${date.toLocaleString('default', { month: 'long' })} ${date.getFullYear()}, 
     ${date.getHours()}:${String(date.getMinutes()).padStart(2, '0')}
@@ -36,3 +36,5 @@ export const Operation: FC<OperationPros> = memo(({ name, category, sum = 0, dat
     </article>
   );
 });
+
+Operation.displayName = 'Operation';

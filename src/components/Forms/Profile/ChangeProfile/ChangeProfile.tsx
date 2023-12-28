@@ -1,12 +1,12 @@
-import React, {FC} from 'react';
-import {yupResolver} from '@hookform/resolvers/yup';
+import React, { FC } from 'react';
+import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
-import {SubmitHandler, useForm} from 'react-hook-form';
-import {ChangeProfileInputs} from './../types';
-import {FormField} from '../../Common/FormField/FormField';
-import {useTranslation} from 'react-i18next';
-import {Button} from "@/components/Forms/Common/Button/Button";
-import {ButtonScales, ButtonVariant} from "@/components/Forms/Common/Button/types";
+import { SubmitHandler, useForm } from 'react-hook-form';
+import { ChangeProfileInputs } from './../types';
+import { FormField } from '../../Common/FormField/FormField';
+import { useTranslation } from 'react-i18next';
+import { Button } from '@/components/Forms/Common/Button/Button';
+import { ButtonScales, ButtonVariant } from '@/components/Forms/Common/Button/types';
 
 const validationSchema = yup.object({
   nickname: yup.string().required(),
@@ -50,7 +50,9 @@ export const ChangeProfile: FC = () => {
           />
         </div>
         <div>
-          <Button variant={ButtonVariant.primary} scale={ButtonScales.small} >{t('forms.profile.save')}</Button>
+          <Button variant={ButtonVariant.primary} scale={ButtonScales.small}>
+            {t('forms.profile.save')}
+          </Button>
         </div>
       </form>
     </div>
