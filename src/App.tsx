@@ -1,8 +1,8 @@
 import React, { createContext, SetStateAction, useState } from 'react';
-import { Layout } from './components/Layout/Layout';
 import './styles/index.sass';
 import './localization';
 import { Localization } from './localization/Localization';
+import { Navigation } from './navigation/Navigation';
 
 type Theme = 'light' | 'dark';
 type Locale = 'en' | 'ru';
@@ -23,7 +23,7 @@ function App() {
   return (
     <Context.Provider value={{ theme: theme, locale: locale, themeSetter: setTheme, localeSetter: setLocale }}>
       <Localization />
-      <Layout />
+      <Navigation />
     </Context.Provider>
   );
 }

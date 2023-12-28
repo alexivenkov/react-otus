@@ -3,6 +3,7 @@ export interface OperationInputs {
   category: string;
   sum: number;
   desc: string;
+  operationType: string;
   date: Date;
 }
 

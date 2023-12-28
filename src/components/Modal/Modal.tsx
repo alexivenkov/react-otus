@@ -1,4 +1,4 @@
-import React, { FC, useEffect, useState } from 'react';
+import React, { FC } from 'react';
 import './Modal.sass';
 import cn from 'clsx';
 import { createPortal } from 'react-dom';
@@ -6,7 +6,7 @@ import { createPortal } from 'react-dom';
 interface ModalProps {
   visible: boolean;
   closeHandler: () => void;
-  children: string;
+  children: any;
   title: string;
 }
 

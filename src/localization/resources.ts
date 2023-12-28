@@ -5,9 +5,9 @@ export const resources = {
       loading: 'Loading',
       header: {
         menu: {
-          first: 'menu item 1',
-          second: 'menu item 2',
-          third: 'menu item 3',
+          home: 'Home',
+          profile: 'Profile',
+          operations: 'Operations',
         },
         switchers: {
           theme: 'Dark Mode',
@@ -15,6 +15,7 @@ export const resources = {
       },
       buttons: {
         showModal: 'Show Modal',
+        edit: 'Edit',
       },
       forms: {
         profile: {
@@ -24,6 +25,8 @@ export const resources = {
           change: 'change',
         },
         operation: {
+          type: 'Operation type',
+          title: 'Save Operation',
           create: 'Create Operation',
           update: 'Update operation',
           name: 'Operation Name',
@@ -32,6 +35,8 @@ export const resources = {
           desc: 'Description',
           date: 'Created At',
           save: 'Save',
+          cost: 'Cost',
+          profit: 'Profit'
         },
       },
     },
@@ -42,9 +47,9 @@ export const resources = {
       loading: 'Загрузка',
       header: {
         menu: {
-          first: 'меню 1',
-          second: 'меню 2',
-          third: 'меню 3',
+          home: 'Главная',
+          profile: 'Профиль',
+          operations: 'Операции',
         },
         switchers: {
           theme: 'Тёмная Тема',
@@ -52,6 +57,7 @@ export const resources = {
       },
       buttons: {
         showModal: 'Показать модальное окно',
+        edit: 'Редактировать',
       },
       forms: {
         profile: {
@@ -61,6 +67,8 @@ export const resources = {
           change: 'Изменить',
         },
         operation: {
+          type: 'Тип Операции',
+          title: 'Сохранить Операцию',
           create: 'Создать Операцию',
           update: 'Обновить Операцию',
           name: 'Операция',
@@ -69,6 +77,8 @@ export const resources = {
           desc: 'Описание',
           date: 'Дата Создания',
           save: 'Сохранить',
+          cost: 'Трата',
+          profit: 'Доход'
         },
       },
     },

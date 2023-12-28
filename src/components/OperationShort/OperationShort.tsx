@@ -2,7 +2,7 @@ import React, { FC } from 'react';
 import './OperationShort.sass';
 import cn from 'clsx';
 
-interface OperationShortProps {
+export interface OperationShortProps {
   name: string;
   category: string;
   sum: number;

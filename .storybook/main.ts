@@ -1,4 +1,6 @@
 import { Configuration } from 'webpack';
+import path from "path";
+import { TsconfigPathsPlugin } from 'tsconfig-paths-webpack-plugin';
 
 const config = {
   stories: ["../src/**/*.mdx", "../src/**/*.stories.@(js|jsx|ts|tsx)"],
@@ -9,6 +11,18 @@ const config = {
     "@storybook/preset-scss"
   ],
   webpackFinal: async (config: Configuration): Promise<Configuration> => {
+    config.resolve.plugins = config.resolve.plugins || [];
+    config.resolve.plugins.push(
+        new TsconfigPathsPlugin({
+          configFile: path.resolve(__dirname, "../tsconfig.json"),
+        })
+    );
+
+    config.resolve.alias = {
+      ...config.resolve.alias,
+      '@/src': path.join(__dirname, 'src'),
+    }
+    
     config.module.rules.push({
       test: /\.scss$/,
       use: [

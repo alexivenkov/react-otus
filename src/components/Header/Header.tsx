@@ -4,8 +4,9 @@ import { Logo } from '../Logo/Logo';
 import './Header.sass';
 import cn from 'clsx';
 import { ThemeSwitcher } from '../ThemeSwitcher/ThemeSwitcher';
-import { AppContext, Context } from '../../App';
+import { AppContext, Context } from '@/App';
 import { LocaleSwitcher } from '../LocaleSwitcher/LocaleSwitcher';
+import { Link } from 'react-router-dom';
 
 export const Header: FC = () => {
   const context: AppContext = useContext<AppContext>(Context);
@@ -23,23 +24,23 @@ export const Header: FC = () => {
             <ul className={cn('menu-items')}>
               <li>
                 <div className={cn('menu-item')}>
-                  <a href={'/'}>
-                    <span>{t('header.menu.first')}</span>
-                  </a>
+                  <Link to={'/'}>
+                    <span>{t('header.menu.home')}</span>
+                  </Link>
                 </div>
               </li>
               <li>
                 <div className={cn('menu-item')}>
-                  <a href={'/'}>
-                    <span>{t('header.menu.second')}</span>
-                  </a>
+                  <Link to={'/profile'}>
+                    <span>{t('header.menu.profile')}</span>
+                  </Link>
                 </div>
               </li>
               <li>
                 <div className={cn('menu-item')}>
-                  <a href={'/'}>
-                    <span>{t('header.menu.third')}</span>
-                  </a>
+                  <Link to={'/operations'}>
+                    <span>{t('header.menu.operations')}</span>
+                  </Link>
                 </div>
               </li>
             </ul>

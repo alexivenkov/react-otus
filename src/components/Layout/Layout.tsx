@@ -1,23 +1,24 @@
-import React, { FC, useContext } from 'react';
+import React, { memo, useContext } from 'react';
 import { Header } from '../Header/Header';
 import './Layout.sass';
 import cn from 'clsx';
-import { AppContext, Context } from '../../App';
-import { useTranslation } from 'react-i18next';
+import { AppContext, Context } from '@/App';
 
-export const Layout: FC = () => {
+interface LayoutProps {
+  children: React.ReactNode;
+}
+export const Layout = memo<LayoutProps>(({ children }) => {
   const context: AppContext = useContext<AppContext>(Context);
   const theme = `layout-${context?.theme ?? 'light'}`;
-  const { t } = useTranslation();
 
   return (
     <div className={cn('layout-container')}>
       <div className={cn('layout', `${theme}`)}>
         <Header />
         <div className={cn('layout-content')}>
-          <p>{t('content')}</p>
+          <main>{children}</main>
         </div>
       </div>
     </div>
   );
-};
+});
