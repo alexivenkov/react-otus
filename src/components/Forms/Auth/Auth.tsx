@@ -6,9 +6,16 @@ import { AuthInputs, AuthType } from './types';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 import { FormField } from '../Common/FormField/FormField';
+import { Button } from '@/components/Forms/Common/Button/Button';
+import { ButtonScales, ButtonVariant } from '@/components/Forms/Common/Button/types';
+import { useTranslation } from 'react-i18next';
+import { tokenActions } from '@/store/token';
+import { useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 
 interface AuthProps {
   type: AuthType;
+  onSubmit?: (data: AuthInputs) => void;
 }
 
 const validationSchema = yup
@@ -18,7 +25,7 @@ const validationSchema = yup
   })
   .required();
 
-export const Auth: FC = memo<AuthProps>(({ type }: AuthProps) => {
+export const Auth: FC<AuthProps> = memo<AuthProps>((props: AuthProps) => {
   const {
     register,
     handleSubmit,
@@ -27,25 +34,34 @@ export const Auth: FC = memo<AuthProps>(({ type }: AuthProps) => {
     resolver: yupResolver(validationSchema),
   });
 
-  const onSubmit: SubmitHandler<AuthInputs> = (data) => console.log(data);
+  const { t } = useTranslation();
+  const onSubmit: SubmitHandler<AuthInputs> = props.onSubmit ? props.onSubmit : console.log;
 
   return (
     <div>
       <form onSubmit={handleSubmit(onSubmit)}>
         <div className={cn('field-container')}>
-          <FormField type={'text'} label={'email'} name={'email'} register={register('email')} errors={errors.email} />
+          <FormField
+            type={'text'}
+            label={t('forms.auth.email')}
+            name={'email'}
+            register={register('email')}
+            errors={errors.email}
+          />
         </div>
         <div className={cn('field-container')}>
           <FormField
             type={'password'}
-            label={'password'}
+            label={t('forms.auth.password')}
             name={'password'}
             register={register('password')}
             errors={errors.password}
           />
         </div>
         <div>
-          <button type={'submit'}>{type == AuthType.signIn ? 'Sign In' : 'Sign Up'}</button>
+          <Button variant={ButtonVariant.secondary} scale={ButtonScales.medium}>
+            {props.type == AuthType.signIn ? t('forms.auth.signIn') : t('forms.auth.singUp')}
+          </Button>
         </div>
       </form>
     </div>

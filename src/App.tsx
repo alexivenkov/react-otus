@@ -3,6 +3,9 @@ import './styles/index.sass';
 import './localization';
 import { Localization } from './localization/Localization';
 import { Navigation } from './navigation/Navigation';
+import { Provider, useSelector } from 'react-redux';
+import { store } from '@/store/';
+import { initSelectors } from '@/store/init';
 
 type Theme = 'light' | 'dark';
 type Locale = 'en' | 'ru';
@@ -21,10 +24,12 @@ function App() {
   const [locale, setLocale] = useState<Locale>('en');
 
   return (
-    <Context.Provider value={{ theme: theme, locale: locale, themeSetter: setTheme, localeSetter: setLocale }}>
-      <Localization />
-      <Navigation />
-    </Context.Provider>
+    <Provider store={store}>
+      <Context.Provider value={{ theme: theme, locale: locale, themeSetter: setTheme, localeSetter: setLocale }}>
+        <Localization />
+        <Navigation />
+      </Context.Provider>
+    </Provider>
   );
 }
 

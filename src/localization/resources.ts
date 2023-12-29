@@ -18,6 +18,12 @@ export const resources = {
         edit: 'Edit',
       },
       forms: {
+        auth: {
+          email: 'Email',
+          password: 'Password',
+          signIn: 'Sign In',
+          singUp: 'Sign Up',
+        },
         profile: {
           nickname: 'nickname',
           about: 'about',
@@ -60,6 +66,12 @@ export const resources = {
         edit: 'Редактировать',
       },
       forms: {
+        auth: {
+          email: 'Электронный Адрес',
+          password: 'Пароль',
+          signIn: 'Войти',
+          singUp: 'Зарегистрироваться',
+        },
         profile: {
           nickname: 'Ник',
           about: 'О Себе',
