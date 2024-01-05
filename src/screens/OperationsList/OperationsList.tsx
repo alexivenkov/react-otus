@@ -10,6 +10,8 @@ import cn from 'clsx';
 import './OperationsList.sass';
 import { Button } from '@/components/Forms/Common/Button/Button';
 import { ButtonScales, ButtonVariant } from '@/components/Forms/Common/Button/types';
+import { useSelector } from 'react-redux';
+import { Profile, profileSelectors } from '@/store/profile';
 
 export const OperationsList: FC = () => {
   const [operations, setOperations] = useState<Operation[]>([
@@ -23,6 +25,7 @@ export const OperationsList: FC = () => {
 
   const [showModal, setShowModal] = useState<boolean>(false);
   const [currentOperation, setCurrentOperation] = useState<Operation>(null);
+  const profile: Profile = useSelector(profileSelectors.get);
 
   const addOperation = (data: OperationInputs): Operation => {
     const operation: Operation = {
@@ -84,11 +87,17 @@ export const OperationsList: FC = () => {
         <OperationForm operation={currentOperation} submitHandler={currentOperation ? editOperation : addOperation} />
       </Modal>
       <div className={cn('button-container')}>
-        <Button variant={ButtonVariant.primary} scale={ButtonScales.medium} onClick={() => setShowModal(true)}>
-          {t('forms.operation.create')}
-        </Button>
+        {profile.isAdmin && (
+          <Button
+            variant={profile.isAdmin ? ButtonVariant.primary : ButtonVariant.secondary}
+            scale={ButtonScales.medium}
+            onClick={() => setShowModal(true)}
+          >
+            {t('forms.operation.create')}
+          </Button>
+        )}
       </div>
-      <List operations={operations} onEdit={onEdit}></List>
+      <List operations={operations} onEdit={profile.isAdmin ? onEdit : null}></List>
     </>
   );
 };

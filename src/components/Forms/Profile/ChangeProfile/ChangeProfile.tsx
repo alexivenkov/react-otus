@@ -8,12 +8,18 @@ import { useTranslation } from 'react-i18next';
 import { Button } from '@/components/Forms/Common/Button/Button';
 import { ButtonScales, ButtonVariant } from '@/components/Forms/Common/Button/types';
 
+interface ChangeProfileProps {
+  nickname?: string;
+  about?: string;
+  onSubmit?: (data: ChangeProfileInputs) => void;
+}
+
 const validationSchema = yup.object({
   nickname: yup.string().required(),
   about: yup.string(),
 });
 
-export const ChangeProfile: FC = () => {
+export const ChangeProfile: FC<ChangeProfileProps> = (props: ChangeProfileProps) => {
   const {
     register,
     handleSubmit,
@@ -23,7 +29,7 @@ export const ChangeProfile: FC = () => {
   });
   const { t } = useTranslation();
 
-  const onSubmit: SubmitHandler<ChangeProfileInputs> = (data) => console.log(data);
+  const onSubmit: SubmitHandler<ChangeProfileInputs> = props.onSubmit ? props.onSubmit : (data) => console.log(data);
 
   return (
     <div>
@@ -35,6 +41,7 @@ export const ChangeProfile: FC = () => {
           <FormField
             type={'text'}
             name={'nickname'}
+            defaultValue={props?.nickname}
             label={t('forms.profile.nickname')}
             register={register('nickname')}
             errors={errors.nickname}
@@ -44,6 +51,7 @@ export const ChangeProfile: FC = () => {
           <FormField
             type={'text'}
             name={'about'}
+            defaultValue={props?.about}
             label={t('forms.profile.about')}
             register={register('about')}
             errors={errors.about}

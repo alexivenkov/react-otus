@@ -1,17 +1,16 @@
 import React, { FC, useContext } from 'react';
-import { useTranslation } from 'react-i18next';
 import { Logo } from '../Logo/Logo';
 import './Header.sass';
 import cn from 'clsx';
 import { ThemeSwitcher } from '../ThemeSwitcher/ThemeSwitcher';
 import { AppContext, Context } from '@/App';
 import { LocaleSwitcher } from '../LocaleSwitcher/LocaleSwitcher';
-import { Link } from 'react-router-dom';
+import { Menu } from '@/components/Header/Menu/Menu';
+import { Auth } from '@/components/Header/Auth/Auth';
 
 export const Header: FC = () => {
   const context: AppContext = useContext<AppContext>(Context);
   const theme = `header-${context?.theme ?? 'light'}`;
-  const { t } = useTranslation();
 
   return (
     <div className={cn('header-container')}>
@@ -21,29 +20,7 @@ export const Header: FC = () => {
             <div className={cn('logo-container')}>
               <Logo />
             </div>
-            <ul className={cn('menu-items')}>
-              <li>
-                <div className={cn('menu-item')}>
-                  <Link to={'/'}>
-                    <span>{t('header.menu.home')}</span>
-                  </Link>
-                </div>
-              </li>
-              <li>
-                <div className={cn('menu-item')}>
-                  <Link to={'/profile'}>
-                    <span>{t('header.menu.profile')}</span>
-                  </Link>
-                </div>
-              </li>
-              <li>
-                <div className={cn('menu-item')}>
-                  <Link to={'/operations'}>
-                    <span>{t('header.menu.operations')}</span>
-                  </Link>
-                </div>
-              </li>
-            </ul>
+            <Menu />
             <div className={'switchers-container'}>
               <ul>
                 <li>
@@ -54,6 +31,7 @@ export const Header: FC = () => {
                 </li>
               </ul>
             </div>
+            <Auth />
           </nav>
         </div>
       </header>
